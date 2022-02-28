@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
-    int liczba=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.button);
         Button buttons = findViewById(R.id.button2);
         Button buttonl = findViewById(R.id.button3);
+        Button buttonu = findViewById(R.id.button4);
         TextView tekst = findViewById(R.id.textView);
+        TextView tekstu = findViewById(R.id.textView2);
         Context context = this;
         MainActivityViewModel model=new ViewModelProvider(this).get(MainActivityViewModel.class);
         tekst.setText(model.liczba);
@@ -38,9 +39,20 @@ public class MainActivity extends AppCompatActivity {
         buttons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(model.liczba>=100){
+                    model.liczba-=100;
+                    model.addUpgrade();
+                    tekstu.setText("Current: "+model.upgrade+" clicks");
+                    button.setText("ADD +"+model.upgrade);
+                }
+            }
+        });
+        buttons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 String filename = "wynik";
                 File file = new File(context.getFilesDir(), filename);
-                int wynik = liczba;
+                int wynik = model.liczba;
                 try {
                     FileWriter fw = new FileWriter(file);
                     fw.write(wynik);
@@ -54,14 +66,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    int liczba =0;
                     String filename = "wynik";
                     File file = new File(context.getFilesDir(), filename);
                     Scanner sc = new Scanner(file);
                     while(sc.hasNext()){
-                        liczba += sc.nextInt();
+                        model.liczba += sc.nextInt();
                     }
-                    tekst.setText(liczba);
+                    tekst.setText(model.liczba);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button">Dodaj +1</string>
+    <string name="textView2">Aktualnie: 1 klikniecia</string>
+    <string name="button4">ULEPSZ (100 KLIKNIEC)</string>
+    <string name="button2">Zapisz progres</string>
+    <string name="button3">Załaduj progres</string>
+</resources>

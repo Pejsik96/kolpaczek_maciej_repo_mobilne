@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">wlasnyprojekt</string>
+    <string name="app_name" translatable="false">wlasnyprojekt</string>
+    <string name="button">ADD +1</string>
+    <string name="textView2">Current: 1 clicks</string>
+    <string name="button4">Upgrade(100 clicks)</string>
+    <string name="button2">Save Progress</string>
+    <string name="button3">Load Progress</string>
 </resources>
